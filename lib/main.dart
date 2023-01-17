@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:toonflix/widgets/Button.dart';
 
 void main() {
   runApp(App());
@@ -9,14 +10,15 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        backgroundColor: Color(0xFF181818),
+        backgroundColor: const Color(0xFF181818),
         body: Padding(
-          padding: EdgeInsets.symmetric(
-            horizontal: 40,
+          padding: const EdgeInsets.symmetric(
+            horizontal: 20,
           ),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(
+              const SizedBox(
                 height: 80,
               ),
               Row(
@@ -24,9 +26,9 @@ class App extends StatelessWidget {
                 children: [
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.end,
-                    children: [
+                    children: const [
                       Text(
-                        "Hey, Selena",
+                        'Hey, Selena',
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 28,
@@ -34,7 +36,7 @@ class App extends StatelessWidget {
                         ),
                       ),
                       Text(
-                        "Welcome back",
+                        'Welcome back',
                         style: TextStyle(
                           color: Color.fromRGBO(255, 255, 255, 0.8),
                           fontSize: 18,
@@ -42,6 +44,42 @@ class App extends StatelessWidget {
                       ),
                     ],
                   )
+                ],
+              ),
+              const SizedBox(
+                height: 120,
+              ),
+              Text(
+                'Total Balance',
+                style: TextStyle(
+                  color: Colors.white.withOpacity(0.8),
+                  fontSize: 20,
+                ),
+              ),
+              const Text(
+                '\$5 194 382',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 40,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+              const SizedBox(
+                height: 30,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: const [
+                  Button(
+                    text: 'Transfer',
+                    bgColor: Color(0xFFF1B33B),
+                    textColor: Colors.black,
+                  ),
+                  Button(
+                    text: 'Request',
+                    bgColor: Color(0xFF1F2123),
+                    textColor: Colors.white,
+                  ),
                 ],
               )
             ],
