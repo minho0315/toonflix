@@ -12,6 +12,14 @@ class App extends StatefulWidget {
 }
 
 class _AppState extends State<App> {
+  bool isUse = true;
+
+  void onToggle() {
+    setState(() {
+      isUse = !isUse;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -27,8 +35,11 @@ class _AppState extends State<App> {
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: const [
-              MyLargeTitle(),
+            children: [
+              isUse ? const MyLargeTitle() : const Text("test"),
+              IconButton(
+                  onPressed: onToggle,
+                  icon: const Icon(Icons.present_to_all_sharp))
             ],
           ),
         ),
@@ -37,28 +48,25 @@ class _AppState extends State<App> {
   }
 }
 
-class MyLargeTitle extends StatelessWidget {
+class MyLargeTitle extends StatefulWidget {
   const MyLargeTitle({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Text(
-          'My Large Title',
-          style: TextStyle(
-            fontSize: 30,
-            color: Theme.of(context).textTheme.titleLarge?.color,
-          ),
-        ),
-        const MyWidget()
-      ],
-    );
-  }
+  State<MyLargeTitle> createState() => _MyLargeTitleState();
 }
 
-class MyWidget extends StatelessWidget {
-  const MyWidget({super.key});
+class _MyLargeTitleState extends State<MyLargeTitle> {
+  @override
+  void initState() {
+    print("init");
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    print("dispose");
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
